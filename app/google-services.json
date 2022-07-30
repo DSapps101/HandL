@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "725559534512",
+    "firebase_url": "https://handl-74dce-default-rtdb.firebaseio.com",
+    "project_id": "handl-74dce",
+    "storage_bucket": "handl-74dce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725559534512:android:d42bcb482dcf99b1502c75",
+        "android_client_info": {
+          "package_name": "com.mako.handl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725559534512-u0jcotq3f3ncb1ua5d2psdctoogot8i4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbKFoMF597VH3-TiboBELwfJRrXBxUqc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725559534512-u0jcotq3f3ncb1ua5d2psdctoogot8i4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

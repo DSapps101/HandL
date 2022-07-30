@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditActivity">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="1005dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unit"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtUnit"
+        app:layout_constraintStart_toStartOf="@+id/editTxtUnit" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtDescription"
+        app:layout_constraintStart_toStartOf="@+id/editTxtDescription" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdate"
+        app:layout_constraintTop_toTopOf="@+id/btnUpdate" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Update"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Code"
+        app:layout_constraintStart_toStartOf="@+id/editTxtCode"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpdate" />
+
+    <EditText
+        android:id="@+id/editTxtCode"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/editTxtDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtUnit"
+        app:layout_constraintStart_toEndOf="@+id/editTxtCode"
+        app:layout_constraintTop_toTopOf="@+id/editTxtCode" />
+
+    <EditText
+        android:id="@+id/editTxtUnit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTxtDescription"
+        app:layout_constraintTop_toTopOf="@+id/editTxtDescription" />
+
+    <EditText
+        android:id="@+id/editTxtListPrice"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtSellingPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtCode" />
+
+    <EditText
+        android:id="@+id/editTxtSellingPrice"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtListPrice"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtWpCash"
+        app:layout_constraintStart_toEndOf="@+id/editTxtListPrice"
+        app:layout_constraintTop_toTopOf="@+id/editTxtListPrice" />
+
+    <EditText
+        android:id="@+id/editTxtWpCash"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtListPrice"
+        app:layout_constraintEnd_toStartOf="@+id/editTxtWPAcc"
+        app:layout_constraintStart_toEndOf="@+id/editTxtSellingPrice"
+        app:layout_constraintTop_toTopOf="@+id/editTxtListPrice" />
+
+    <EditText
+        android:id="@+id/editTxtWPAcc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtListPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTxtWpCash"
+        app:layout_constraintTop_toTopOf="@+id/editTxtListPrice" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listing Price Cash"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtListPrice"
+        app:layout_constraintStart_toStartOf="@+id/editTxtListPrice" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selling Price Cash"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtSellingPrice"
+        app:layout_constraintStart_toStartOf="@+id/editTxtSellingPrice" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WP Cash"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtWpCash"
+        app:layout_constraintStart_toStartOf="@+id/editTxtWpCash" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WP Account"
+        app:layout_constraintBottom_toTopOf="@+id/editTxtWPAcc"
+        app:layout_constraintStart_toStartOf="@+id/editTxtWPAcc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
