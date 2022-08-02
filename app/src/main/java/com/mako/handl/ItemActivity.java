@@ -33,10 +33,12 @@ public class ItemActivity extends AppCompatActivity {
     TextView txtTotal;
     TextView txtCount;
     Spinner spinnerCat;
+    Spinner spinnerPrice;
     ArrayList<String> ar;
     ArrayList<String> arSub;
     ArrayList<String> arPowerUsers;
     String strCatChosen;
+    String strPriceCatChosen;
     String strUser;
     Button btnSearch;
     Button btnShow;
@@ -60,6 +62,7 @@ public class ItemActivity extends AppCompatActivity {
         arSub = new ArrayList<>();
         arPowerUsers = new ArrayList<>();
         strCatChosen = "tools";
+        strPriceCatChosen = "List price";
         strSearch = "";
         bAll = false;
 
@@ -68,6 +71,7 @@ public class ItemActivity extends AppCompatActivity {
         //txtTotal = findViewById(R.id.txtTotal);
         //txtCount = findViewById(R.id.txtCount);
         spinnerCat = findViewById(R.id.spinner);
+        spinnerPrice = findViewById(R.id.spinnerPrice);
         btnSearch = findViewById(R.id.btnSearch);
         btnShow = findViewById(R.id.btnAll);
         btnRefresh = findViewById(R.id.btnRefresh);
@@ -75,12 +79,13 @@ public class ItemActivity extends AppCompatActivity {
         txtShowing = findViewById(R.id.txtShowing);
 
         //initCats();
+        //initPriceCats();
         //addUsers();
         //Toast.makeText(this, "the current user is" + strUser, Toast.LENGTH_LONG).show();
         getPowerusers();
         initTable();
+        initSpinners();
         initListeners();
-        initSpinner();
 
     }
 
@@ -92,12 +97,30 @@ public class ItemActivity extends AppCompatActivity {
 
                 //Toast.makeText(ItemActivity.this,"you selected" + parentView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG ).show();
                 strCatChosen = parentView.getItemAtPosition(position).toString();
+                //Don't show all items but only top 50
                 bAll = false;
                 updateTable();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
+
+        spinnerPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                strPriceCatChosen = adapterView.getItemAtPosition(i).toString();
+                //Don't show all items but only top 50
+                bAll = false;
+                updateTable();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
@@ -242,13 +265,24 @@ public class ItemActivity extends AppCompatActivity {
 
         }
 
-
-
-
-
     }
 
-    public void initSpinner(){
+    public void initPriceCats(){
+        FirebaseDatabase priceDatabase = FireOfflineClass.getDatabase();
+        DatabaseReference priceDatabaseRef = priceDatabase.getReference();
+
+        String[] priceArray = {"List price","Selling price cash","WP Cash","WP Account"};
+        for(final String price : priceArray){
+            priceDatabaseRef.child("pricecats").child(price).setValue("0");
+        }
+    }
+
+    public void initSpinners(){
+        initCatSpinner();
+        initPriceSpinner();
+    }
+
+    public void initCatSpinner(){
 
 
 
@@ -273,6 +307,40 @@ public class ItemActivity extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ItemActivity.this, android.R.layout.simple_spinner_item, arCat);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerCat.setAdapter(arrayAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+    }
+
+    public void initPriceSpinner(){
+
+        FirebaseDatabase priceDatabase = FireOfflineClass.getDatabase();
+        DatabaseReference priceDatabaseRef;
+        priceDatabaseRef = priceDatabase.getReference().child("pricecats");
+
+        priceDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                ArrayList<String> arCat =  new ArrayList<>();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    String strCat = dataSnapshot.getKey();
+                    arCat.add(strCat);
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ItemActivity.this, android.R.layout.simple_spinner_item, arCat);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPrice.setAdapter(arrayAdapter);
 
             }
 
@@ -347,6 +415,8 @@ public class ItemActivity extends AppCompatActivity {
 
 
                 //String st = "test1_test2_test3";
+                //The array is split up into the items and prices for columns
+
                 String s = rows.get(i);
                 String[] cols = s.split("_");
 
@@ -364,6 +434,7 @@ public class ItemActivity extends AppCompatActivity {
                 int l = 0;
 
 
+                //Fill in each column
                 for (final String col : cols) {
                     l++;
                     if (!(l==8)) {

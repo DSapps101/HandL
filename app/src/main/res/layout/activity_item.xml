@@ -128,5 +128,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnSearch" />
 
+    <Spinner
+        android:id="@+id/spinnerPrice"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:background="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtSearch"
+        app:layout_constraintStart_toEndOf="@+id/btnSearch"
+        app:layout_constraintTop_toTopOf="@+id/editTxtSearch" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Price Category"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerPrice"
+        app:layout_constraintStart_toStartOf="@+id/spinnerPrice"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
