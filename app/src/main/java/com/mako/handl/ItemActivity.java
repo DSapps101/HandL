@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 
 public class ItemActivity extends AppCompatActivity {
 
@@ -77,6 +78,8 @@ public class ItemActivity extends AppCompatActivity {
         btnRefresh = findViewById(R.id.btnRefresh);
         editTxtSearch = findViewById(R.id.editTxtSearch);
         txtShowing = findViewById(R.id.txtShowing);
+
+        btnRefresh.setVisibility(View.INVISIBLE);
 
         //initCats();
         //initPriceCats();
@@ -143,6 +146,7 @@ public class ItemActivity extends AppCompatActivity {
             }
         });
 
+        /*
         btnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,6 +154,7 @@ public class ItemActivity extends AppCompatActivity {
                 updateTable();
             }
         });
+        */
 
 
 
@@ -358,7 +363,7 @@ public class ItemActivity extends AppCompatActivity {
 
         if(ar != null) {
             arSub.clear();
-            arSub.add("Code_Description_Unit_List price  _Selling price cash_Wp cash_Wp acc");
+            //arSub.add("Code_Description_Unit_List price  _Selling price cash_Wp cash_Wp acc");
             int j=0;
             for (final String strSubRow : ar) {
 
@@ -387,10 +392,7 @@ public class ItemActivity extends AppCompatActivity {
                         break;
                     }
                 }
-
-
             }
-
 
             myTableLayout.removeAllViews();
 
@@ -446,25 +448,40 @@ public class ItemActivity extends AppCompatActivity {
                         switch (l) {
 
                             case 1:
-                                columsView.setText(String.format("%40s", col));
+                                columsView.setText(String.format("  %s", col));
+                                columsView.setWidth(320);
                                 break;
                             case 2:
-                                columsView.setText(String.format("%120s", col));
+                                columsView.setText(String.format("%s", col));
+                                columsView.setWidth(1400);
                                 break;
                             case 3:
-                                columsView.setText(String.format("%15s", col));
+                                columsView.setText(String.format("%s", col));
+                                columsView.setWidth(220);
                                 break;
                             case 4:
-                                columsView.setText(String.format("%15s", col));
+                                if(Objects.equals(strPriceCatChosen, "List price")) {
+                                    columsView.setText(String.format("%s", col));
+                                    columsView.setWidth(220);
+                                }
                                 break;
                             case 5:
-                                columsView.setText(String.format("%15s", col));
+                                if(Objects.equals(strPriceCatChosen, "Selling price cash")) {
+                                    columsView.setText(String.format("%s", col));
+                                    columsView.setWidth(220);
+                                }
                                 break;
                             case 6:
-                                columsView.setText(String.format("%15s", col));
+                                if(Objects.equals(strPriceCatChosen, "WP Cash")) {
+                                    columsView.setText(String.format("%s", col));
+                                    columsView.setWidth(220);
+                                }
                                 break;
                             case 7:
-                                columsView.setText(String.format("%15s", col));
+                                if(Objects.equals(strPriceCatChosen, "WP Account")) {
+                                    columsView.setText(String.format("%s", col));
+                                    columsView.setWidth(220);
+                                }
                                 break;
                             default:
 
